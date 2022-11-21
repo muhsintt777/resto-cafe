@@ -1,0 +1,14 @@
+.header-myOrders {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.header-myOrders > p {
+  margin-right: 10px;
+  color: rgb(77, 77, 77);
+}
+
+.header-name > h1 {
+  color: rgb(77, 77, 77);
+}
