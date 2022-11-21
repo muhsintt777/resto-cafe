@@ -5,8 +5,18 @@ import BarnyardPage from "./pages/barnyard/BarnyardPage";
 import FromSeaPage from "./pages/fromSea/FromSeaPage";
 import HenHousePage from "./pages/henHouse/HenHousePage";
 import SaladSoupPage from "./pages/saladSoup/SaladSoupPage";
+import axios from "axios";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    axios
+      .get("https://run.mocky.io/v3/a67edc87-49c7-4822-9cb4-e2ef94cb3099")
+      .then((response) => {
+        console.log(response.data);
+      });
+  }, []);
+
   return (
     <div className="App">
       <Routes>
