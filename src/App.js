@@ -10,11 +10,14 @@ import { useEffect } from "react";
 
 function App() {
   useEffect(() => {
-    axios
-      .get("https://run.mocky.io/v3/a67edc87-49c7-4822-9cb4-e2ef94cb3099")
-      .then((response) => {
-        console.log(response.data);
-      });
+    const fetchData = async () => {
+      const response = await axios.get(
+        "https://run.mocky.io/v3/a67edc87-49c7-4822-9cb4-e2ef94cb3099"
+      );
+      const arr = response.data;
+      console.log(arr[0].table_menu_list[0].menu_category);
+    };
+    fetchData();
   }, []);
 
   return (
