@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <nav>
       <Link to="/">
-        <button className="navbar-buttons">Salads and Soups</button>
+        <button className="navbar-buttons">Soup and Salad</button>
       </Link>
       <Link to="/barnyard">
         <button className="navbar-buttons">From the Barnyard</button>
@@ -16,6 +16,12 @@ const Navbar = () => {
       </Link>
       <Link to="/fromSea">
         <button className="navbar-buttons">Fresh From The Sea</button>
+      </Link>
+      <Link to="/biriyani">
+        <button className="navbar-buttons">Biriyani</button>
+      </Link>
+      <Link to="/fastFood">
+        <button className="navbar-buttons">Fast Food</button>
       </Link>
     </nav>
   );

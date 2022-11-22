@@ -5,20 +5,21 @@ import BarnyardPage from "./pages/barnyard/BarnyardPage";
 import FromSeaPage from "./pages/fromSea/FromSeaPage";
 import HenHousePage from "./pages/henHouse/HenHousePage";
 import SaladSoupPage from "./pages/saladSoup/SaladSoupPage";
-import axios from "axios";
+import BiriyaniPage from "./pages/biriyani/Biriyani";
+import FastFoodPage from "./pages/fastFood/FastFood";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData, getDataStatus } from "./features/data/dataSlice";
 
 function App() {
+  const dispatch = useDispatch();
+  const dataStatus = useSelector(getDataStatus);
+
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(
-        "https://run.mocky.io/v3/a67edc87-49c7-4822-9cb4-e2ef94cb3099"
-      );
-      const arr = response.data;
-      console.log(arr[0].table_menu_list[0].menu_category);
-    };
-    fetchData();
-  }, []);
+    if (dataStatus === "idle") {
+      dispatch(fetchData());
+    }
+  }, [dataStatus, dispatch]);
 
   return (
     <div className="App">
@@ -28,6 +29,8 @@ function App() {
           <Route path="barnyard" element={<BarnyardPage />} />
           <Route path="henHouse" element={<HenHousePage />} />
           <Route path="fromSea" element={<FromSeaPage />} />
+          <Route path="biriyani" element={<BiriyaniPage />} />
+          <Route path="fastFood" element={<FastFoodPage />} />
         </Route>
       </Routes>
     </div>
