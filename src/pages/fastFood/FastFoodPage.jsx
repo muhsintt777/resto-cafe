@@ -1,9 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { getDataStatus } from "../../features/data/dataSlice";
-import "./HenHousePage.css";
 
-const HenHousePage = () => {
+const FastFood = () => {
   const dataStatus = useSelector(getDataStatus);
   return (
     <section>
@@ -11,17 +10,16 @@ const HenHousePage = () => {
         <p>loading</p>
       ) : (
         <>
-          <h1>hen house</h1>
-          <h1>hen house</h1>
-          <h1>hen house</h1>
-          <h1>hen house</h1>
-          <h1>hen house</h1>
-          <h1>hen house</h1>
-          <h1>hen house</h1>
+          <h2>fast foood</h2>
+          <h2>fast foood</h2>
+          <h2>fast foood</h2>
+          <h2>fast foood</h2>
+          <h2>fast foood</h2>
+          <h2>fast foood</h2>
         </>
       )}
     </section>
   );
 };
 
-export default HenHousePage;
+export default FastFood;
