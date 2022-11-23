@@ -9,7 +9,7 @@ const HenHousePage = () => {
     <section>
       {dataStatus === "loading" ? (
         <p>loading</p>
-      ) : (
+      ) : dataStatus === "succeeded" ? (
         <>
           <h1>hen house</h1>
           <h1>hen house</h1>
@@ -19,7 +19,9 @@ const HenHousePage = () => {
           <h1>hen house</h1>
           <h1>hen house</h1>
         </>
-      )}
+      ) : dataStatus === "failed" ? (
+        <p>loading failed</p>
+      ) : null}
     </section>
   );
 };

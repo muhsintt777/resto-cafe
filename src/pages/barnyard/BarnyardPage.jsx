@@ -9,7 +9,7 @@ const BarnyardPage = () => {
     <section>
       {dataStatus === "loading" ? (
         <p>loading</p>
-      ) : (
+      ) : dataStatus === "succeeded" ? (
         <>
           <h1>barnyade</h1>
           <h1>barnyade</h1>
@@ -17,7 +17,9 @@ const BarnyardPage = () => {
           <h1>barnyade</h1>
           <h1>barnyade</h1>
         </>
-      )}
+      ) : dataStatus === "failed" ? (
+        <p>Error data loading failed</p>
+      ) : null}
     </section>
   );
 };

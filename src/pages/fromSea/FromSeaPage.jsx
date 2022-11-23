@@ -9,7 +9,7 @@ const FromSeaPage = () => {
     <section>
       {dataStatus === "loading" ? (
         <p>loading</p>
-      ) : (
+      ) : dataStatus === "succeeded" ? (
         <>
           <h1>sea</h1>
           <h1>sea</h1>
@@ -18,7 +18,9 @@ const FromSeaPage = () => {
           <h1>sea</h1>
           <h1>sea</h1>
         </>
-      )}
+      ) : dataStatus === "failed" ? (
+        <p>loading failed</p>
+      ) : null}
     </section>
   );
 };

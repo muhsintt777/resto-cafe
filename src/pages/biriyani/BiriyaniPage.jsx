@@ -8,7 +8,7 @@ const Biriyani = () => {
     <section>
       {dataStatus === "loading" ? (
         <p>loading</p>
-      ) : (
+      ) : dataStatus === "succeeded" ? (
         <>
           <h2>biriyani</h2>
           <h2>biriyani</h2>
@@ -16,7 +16,9 @@ const Biriyani = () => {
           <h2>biriyani</h2>
           <h2>biriyani</h2>
         </>
-      )}
+      ) : dataStatus === "failed" ? (
+        <p>data loading failed</p>
+      ) : null}
     </section>
   );
 };

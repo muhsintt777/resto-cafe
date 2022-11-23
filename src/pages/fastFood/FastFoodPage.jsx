@@ -8,7 +8,7 @@ const FastFood = () => {
     <section>
       {dataStatus === "loading" ? (
         <p>loading</p>
-      ) : (
+      ) : dataStatus === "succeeded" ? (
         <>
           <h2>fast foood</h2>
           <h2>fast foood</h2>
@@ -17,7 +17,9 @@ const FastFood = () => {
           <h2>fast foood</h2>
           <h2>fast foood</h2>
         </>
-      )}
+      ) : dataStatus === "failed" ? (
+        <p>loading failed</p>
+      ) : null}
     </section>
   );
 };

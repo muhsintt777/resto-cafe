@@ -9,7 +9,7 @@ const SaladSoupPage = () => {
     <section>
       {dataStatus === "loading" ? (
         <p>loading</p>
-      ) : (
+      ) : dataStatus === "succeeded" ? (
         <>
           <h1>salad and soup</h1>
           <h1>salad and soup</h1>
@@ -21,7 +21,9 @@ const SaladSoupPage = () => {
           <h1>salad and soup</h1>
           <h1>salad and soup</h1>
         </>
-      )}
+      ) : dataStatus === "failed" ? (
+        <p>loading failed</p>
+      ) : null}
     </section>
   );
 };
