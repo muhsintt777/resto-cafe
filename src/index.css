@@ -26,4 +26,11 @@ header {
 nav {
   display: flex;
   justify-content: space-between;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 5px 5px;
+}
+nav::-webkit-scrollbar {
+  display: none;
 }

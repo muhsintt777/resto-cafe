@@ -58,8 +58,8 @@ const MenuItem = ({
       <div className="menuItem-calories">
         <p>{calories} calories</p>
       </div>
-      <div className="menuItem-img">
-        <img src={image} alt="new" />
+      <div className="menuItem-image">
+        <img className="menuItem-img__pic" src={image} alt="new" />
       </div>
     </article>
   );
