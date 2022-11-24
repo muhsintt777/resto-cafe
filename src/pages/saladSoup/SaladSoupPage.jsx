@@ -1,26 +1,34 @@
+import { nanoid } from "@reduxjs/toolkit";
 import React from "react";
 import { useSelector } from "react-redux";
-import { getDataStatus } from "../../features/data/dataSlice";
+import MenuItem from "../../components/menuItem/MenuItem";
+import { getDataStatus, selectAllData } from "../../features/data/dataSlice";
 import "./SaladSoupPage.css";
 
 const SaladSoupPage = () => {
   const dataStatus = useSelector(getDataStatus);
+  const allData = useSelector(selectAllData);
+  const menuItemArray = allData[0].category_dishes;
+  const renderedItems = menuItemArray.map((item) => (
+    <MenuItem
+      key={nanoid()}
+      name={item.dish_name}
+      calories={item.dish_calories}
+      description={item.dish_description}
+      image={item.dish_image}
+      currency={item.dish_currency}
+      itemAvailability={item.dish_Availability}
+      price={item.dish_price}
+      type={item.dish_Type}
+    />
+  ));
+  console.log(allData[0].category_dishes);
   return (
     <section>
       {dataStatus === "loading" ? (
         <p>loading</p>
       ) : dataStatus === "succeeded" ? (
-        <>
-          <h1>salad and soup</h1>
-          <h1>salad and soup</h1>
-          <h1>salad and soup</h1>
-          <h1>salad and soup</h1>
-          <h1>salad and soup</h1>
-          <h1>salad and soup</h1>
-          <h1>salad and soup</h1>
-          <h1>salad and soup</h1>
-          <h1>salad and soup</h1>
-        </>
+        <>{renderedItems}</>
       ) : dataStatus === "failed" ? (
         <p>loading failed</p>
       ) : null}

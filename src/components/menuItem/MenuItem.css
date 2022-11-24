@@ -1,0 +1,67 @@
+.menuItem-article {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.menuItem-article__vegNonVeg {
+  padding: 5px;
+}
+
+.menuItem-article__nonVeg__border {
+  display: grid;
+  place-content: center;
+  border: 1px solid red;
+}
+.menuItem-article__veg__border {
+  display: grid;
+  place-content: center;
+  border: 1px solid green;
+}
+
+.menuItem-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.menuItem-details__name {
+  font-size: medium;
+  font-weight: 600;
+}
+.menuItem-details__sarValue {
+  font-size: small;
+  font-weight: 500;
+}
+.menuItem-details__description {
+  font-size: small;
+  font-weight: 400;
+  color: rgb(77, 77, 77);
+}
+
+.menuItem-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 120px;
+  padding: 5px;
+}
+
+.menuItem-calories {
+  display: grid;
+  place-content: center;
+  width: 150px;
+}
+.menuItem-calories > p {
+  font-size: small;
+  font-weight: 500;
+}
+
+.menuItem-img {
+  width: 100px;
+}
+.menuItem-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
