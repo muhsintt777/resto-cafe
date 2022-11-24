@@ -3,13 +3,18 @@ import { useSelector } from "react-redux";
 import MenuItem from "../../components/menuItem/MenuItem";
 import { getDataStatus, selectAllData } from "../../features/data/dataSlice";
 import "./HenHousePage.css";
+import { nanoid } from "@reduxjs/toolkit";
 
 const HenHousePage = () => {
   const dataStatus = useSelector(getDataStatus);
   const allData = useSelector(selectAllData);
-  const menuItemArray = allData[1].category_dishes;
-  const renderedItems = menuItemArray.map((item) => {
-    return (
+
+  let renderedItems;
+  if (dataStatus === "loading") {
+    renderedItems = <p>loading</p>;
+  } else if (dataStatus === "succeeded") {
+    const menuItemArray = allData[2].category_dishes;
+    renderedItems = menuItemArray.map((item) => (
       <MenuItem
         key={nanoid()}
         name={item.dish_name}
@@ -21,20 +26,14 @@ const HenHousePage = () => {
         price={item.dish_price}
         type={item.dish_Type}
       />
-    );
-  });
+    ));
+  } else if (dataStatus === "failed") {
+    renderedItems = <p>loading failed</p>;
+  } else {
+    renderedItems = null;
+  }
 
-  return (
-    <section>
-      {dataStatus === "loading" ? (
-        <p>loading</p>
-      ) : dataStatus === "succeeded" ? (
-        <>{renderedItems}</>
-      ) : dataStatus === "failed" ? (
-        <p>loading failed</p>
-      ) : null}
-    </section>
-  );
+  return <section>{renderedItems}</section>;
 };
 
 export default HenHousePage;
