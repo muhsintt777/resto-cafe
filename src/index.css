@@ -34,3 +34,13 @@ nav {
 nav::-webkit-scrollbar {
   display: none;
 }
+
+@media (max-width: 500px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 15px;
+    white-space: nowrap;
+  }
+}

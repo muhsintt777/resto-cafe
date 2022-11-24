@@ -67,3 +67,24 @@
   height: 100px;
   object-fit: cover;
 }
+
+@media (max-width: 500px) {
+  .menuItem-image {
+    display: grid;
+    place-content: center;
+    width: 75px;
+  }
+  .menuItem-img__pic {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+  }
+
+  .menuItem-calories {
+    display: grid;
+    place-content: center;
+    width: 100px;
+    white-space: nowrap;
+    padding: 0px 5px;
+  }
+}
