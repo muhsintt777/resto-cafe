@@ -4,6 +4,7 @@ import CircleIcon from "@mui/icons-material/Circle";
 import { green, red } from "@mui/material/colors";
 import { Fab } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";
+import { nanoid } from "@reduxjs/toolkit";
 
 const MenuItem = ({
   name,
@@ -14,6 +15,8 @@ const MenuItem = ({
   itemAvailability,
   price,
   type,
+  addon1Items,
+  addon2Items,
 }) => {
   const sxValue =
     type === 1
@@ -27,6 +30,27 @@ const MenuItem = ({
       : type === 2
       ? "menuItem-article__veg__border"
       : null;
+
+  let renderedAddons = [];
+  if (addon1Items || addon2Items) {
+    const allAddons = addon1Items.concat(addon2Items);
+    renderedAddons = allAddons.map((addon) => {
+      return (
+        <div key={nanoid()}>
+          <label htmlFor="">{addon}</label>
+          <input
+            key={nanoid()}
+            aria-label={addon}
+            type="checkbox"
+            name=""
+            id=""
+            value={addon}
+          />
+        </div>
+      );
+    });
+  }
+
   return (
     <article className="menuItem-article">
       <div className="menuItem-article__vegNonVeg">
@@ -54,6 +78,8 @@ const MenuItem = ({
         ) : !itemAvailability ? (
           <p>out of stock</p>
         ) : null}
+
+        {renderedAddons}
       </div>
       <div className="menuItem-calories">
         <p>{calories} calories</p>
