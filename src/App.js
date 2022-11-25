@@ -10,6 +10,7 @@ import FastFoodPage from "./pages/fastFood/FastFoodPage";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData, getDataStatus } from "./features/data/dataSlice";
+import OrderPage from "./pages/order/OrderPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
           <Route path="biriyani" element={<BiriyaniPage />} />
           <Route path="fastFood" element={<FastFoodPage />} />
         </Route>
+        <Route path="/order" element={<OrderPage />} />
       </Routes>
     </div>
   );

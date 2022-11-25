@@ -18,6 +18,18 @@ const MenuItem = ({
   addon1Items,
   addon2Items,
 }) => {
+  let arr = [];
+
+  const handleFormChange = (e) => {
+    const check = arr.find((add) => add === e.target.value);
+    if (!check) {
+      arr.push(e.target.value);
+    } else if (check) {
+      const newArr = arr.filter((add) => add !== e.target.value);
+      arr = newArr;
+    }
+  };
+
   const sxValue =
     type === 1
       ? { color: red[500] }
@@ -37,15 +49,20 @@ const MenuItem = ({
     renderedAddons = allAddons.map((addon) => {
       return (
         <div key={nanoid()}>
-          <label htmlFor="">{addon}</label>
-          <input
-            key={nanoid()}
-            aria-label={addon}
-            type="checkbox"
-            name=""
-            id=""
-            value={addon}
-          />
+          <form
+            onChange={handleFormChange}
+            className="menuItem-addons"
+            action=""
+          >
+            <label htmlFor="">{addon}</label>
+            <input
+              aria-label={addon}
+              type="checkbox"
+              name=""
+              id=""
+              value={addon}
+            />
+          </form>
         </div>
       );
     });

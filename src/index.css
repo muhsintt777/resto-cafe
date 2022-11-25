@@ -35,6 +35,11 @@ nav::-webkit-scrollbar {
   display: none;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 @media (max-width: 500px) {
   header {
     display: flex;

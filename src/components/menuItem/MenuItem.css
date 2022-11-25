@@ -47,6 +47,14 @@
   padding: 5px;
 }
 
+.menuItem-addons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 150px;
+  white-space: nowrap;
+}
+
 .menuItem-calories {
   display: grid;
   place-content: center;
