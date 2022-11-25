@@ -1,9 +1,36 @@
 import React from "react";
+import "./OrderPage.css";
+import HomeIcon from "@mui/icons-material/Home";
+import { useSelector } from "react-redux";
+import { selectAllOrder } from "../../features/order/orderSlice";
+import { nanoid } from "@reduxjs/toolkit";
+import OrderItem from "../../components/orderItem/OrderItem";
 
 const OrderPage = () => {
+  const allOrder = useSelector(selectAllOrder);
+  console.log(allOrder);
+
+  const renderedOrder = allOrder.map((order) => {
+    return (
+      <OrderItem
+        key={nanoid()}
+        name={order.name}
+        quantity={order.quantity}
+        calories={order.calories}
+        price={order.price}
+        addons={order.addons}
+        id={order.id}
+      />
+    );
+  });
+
   return (
-    <section>
-      <h1>cart</h1>
+    <section className="orderPage-container">
+      <div className="orderPage-header">
+        <p>Cart</p>
+        <HomeIcon color="secondary" fontSize="large" />
+      </div>
+      <div className="orderList">{renderedOrder}</div>
     </section>
   );
 };

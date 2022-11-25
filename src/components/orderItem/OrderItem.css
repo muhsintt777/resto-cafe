@@ -1,0 +1,33 @@
+.orderItem-container {
+  display: flex;
+  flex-direction: row;
+  background-color: aqua;
+  margin-bottom: 10px;
+}
+
+.orderItem-quantity {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  background-color: antiquewhite;
+}
+
+.orderItem-description {
+  flex: 1;
+}
+.orderItem-description > p {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 5px 0px;
+}
+.orderItem-description__span {
+  color: rgb(77, 77, 77);
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.orderItem-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
