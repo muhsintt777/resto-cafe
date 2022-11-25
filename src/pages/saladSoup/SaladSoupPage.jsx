@@ -26,9 +26,12 @@ const SaladSoupPage = () => {
         addon2Items = addonArr2.map((addon) => addon.dish_name);
       }
 
+      const id = nanoid();
+
       return (
         <MenuItem
-          key={nanoid()}
+          key={id}
+          id={id}
           name={item.dish_name}
           calories={item.dish_calories}
           description={item.dish_description}

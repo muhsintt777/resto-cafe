@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { selectAllOrder } from "../../features/order/orderSlice";
 import { nanoid } from "@reduxjs/toolkit";
 import OrderItem from "../../components/orderItem/OrderItem";
+import { Link } from "react-router-dom";
 
 const OrderPage = () => {
   const allOrder = useSelector(selectAllOrder);
@@ -28,7 +29,9 @@ const OrderPage = () => {
     <section className="orderPage-container">
       <div className="orderPage-header">
         <p>Cart</p>
-        <HomeIcon color="secondary" fontSize="large" />
+        <Link to="/">
+          <HomeIcon color="secondary" fontSize="large" />
+        </Link>
       </div>
       <div className="orderList">{renderedOrder}</div>
     </section>

@@ -5,8 +5,15 @@ import { green, red } from "@mui/material/colors";
 import { Fab } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";
 import { nanoid } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addOrder,
+  incrementQuantity,
+  selectAllOrder,
+} from "../../features/order/orderSlice";
 
 const MenuItem = ({
+  id,
   name,
   calories,
   description,
@@ -18,6 +25,8 @@ const MenuItem = ({
   addon1Items,
   addon2Items,
 }) => {
+  const dispatch = useDispatch();
+  const allOrder = useSelector(selectAllOrder);
   let arr = [];
 
   const handleFormChange = (e) => {
@@ -27,6 +36,27 @@ const MenuItem = ({
     } else if (check) {
       const newArr = arr.filter((add) => add !== e.target.value);
       arr = newArr;
+    }
+  };
+
+  const handleAddOrder = () => {
+    const checkOdr = allOrder.find((odr) => odr.id === id);
+    if (!arr.length) {
+      arr.push("No addons");
+    }
+
+    if (!checkOdr) {
+      const orderObj = {
+        id: id,
+        name: name,
+        price: price,
+        quantity: 1,
+        calories: calories,
+        addons: [...arr],
+      };
+      dispatch(addOrder(orderObj));
+    } else {
+      dispatch(incrementQuantity(id));
     }
   };
 
@@ -86,7 +116,12 @@ const MenuItem = ({
             <Remove />
           </Fab>
           <p>0</p>
-          <Fab size="small" sx={{ color: green[500] }} aria-label="add">
+          <Fab
+            onClick={handleAddOrder}
+            size="small"
+            sx={{ color: green[500] }}
+            aria-label="add"
+          >
             <Add />
           </Fab>
         </div>
