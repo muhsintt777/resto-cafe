@@ -1,15 +1,18 @@
 .layout-container {
   padding: 0px 200px;
+  min-height: 80vh;
 }
 
 @media (max-width: 1200px) {
   .layout-container {
     padding: 0px 100px;
+    min-height: 80vh;
   }
 }
 
 @media (max-width: 800px) {
   .layout-container {
     padding: 0px;
+    min-height: 80vh;
   }
 }
