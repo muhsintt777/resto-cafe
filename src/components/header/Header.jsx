@@ -15,7 +15,7 @@ const Header = () => {
         <h1>UNI Resto cafe</h1>
       </div>
       <Link to="/order">
-        <div className="header-myOrders">
+        <div title="Cart" className="header-myOrders">
           <p>My Orders</p>
           <Badge badgeContent={cartQty} color="secondary">
             <ShoppingCartIcon color="secondary" />

@@ -7,7 +7,6 @@ import {
   selectAllData,
 } from "../../features/data/dataSlice";
 import "./BarnyardPage.css";
-import { nanoid } from "@reduxjs/toolkit";
 
 const BarnyardPage = () => {
   const dataStatus = useSelector(getDataStatus);
@@ -35,7 +34,7 @@ const BarnyardPage = () => {
         addon2Items = addonArr2.map((addon) => addon.dish_name);
       }
 
-      const id = nanoid();
+      const id = item.dish_name.split(" ").join("");
 
       return (
         <MenuItem

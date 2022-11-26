@@ -29,7 +29,7 @@ const OrderPage = () => {
       <div className="orderPage-header">
         <p>Cart</p>
         <Link to="/">
-          <HomeIcon color="secondary" fontSize="large" />
+          <HomeIcon titleAccess="Home" color="secondary" fontSize="large" />
         </Link>
       </div>
       <div className="orderList">{renderedOrder}</div>

@@ -6,7 +6,6 @@ import {
   getDataStatus,
   selectAllData,
 } from "../../features/data/dataSlice";
-import { nanoid } from "@reduxjs/toolkit";
 
 const FastFood = () => {
   const dataStatus = useSelector(getDataStatus);
@@ -34,7 +33,7 @@ const FastFood = () => {
         addon2Items = addonArr2.map((addon) => addon.dish_name);
       }
 
-      const id = nanoid();
+      const id = item.dish_name.split(" ").join("");
 
       return (
         <MenuItem

@@ -1,4 +1,3 @@
-import { nanoid } from "@reduxjs/toolkit";
 import React from "react";
 import { useSelector } from "react-redux";
 import MenuItem from "../../components/menuItem/MenuItem";
@@ -35,7 +34,7 @@ const SaladSoupPage = () => {
         addon2Items = addonArr2.map((addon) => addon.dish_name);
       }
 
-      const id = nanoid();
+      const id = item.dish_name.split(" ").join("");
 
       return (
         <MenuItem

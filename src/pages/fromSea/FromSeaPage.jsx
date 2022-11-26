@@ -7,7 +7,6 @@ import {
   selectAllData,
 } from "../../features/data/dataSlice";
 import "./FromSeaPage.css";
-import { nanoid } from "@reduxjs/toolkit";
 
 const FromSeaPage = () => {
   const dataStatus = useSelector(getDataStatus);
@@ -35,7 +34,7 @@ const FromSeaPage = () => {
         addon2Items = addonArr2.map((addon) => addon.dish_name);
       }
 
-      const id = nanoid();
+      const id = item.dish_name.split(" ").join("");
 
       return (
         <MenuItem
