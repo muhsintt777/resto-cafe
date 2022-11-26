@@ -1,13 +1,18 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import MenuItem from "../../components/menuItem/MenuItem";
-import { getDataStatus, selectAllData } from "../../features/data/dataSlice";
+import {
+  getDataError,
+  getDataStatus,
+  selectAllData,
+} from "../../features/data/dataSlice";
 import "./HenHousePage.css";
 import { nanoid } from "@reduxjs/toolkit";
 
 const HenHousePage = () => {
   const dataStatus = useSelector(getDataStatus);
   const allData = useSelector(selectAllData);
+  const allError = useSelector(getDataError);
 
   let renderedItems;
   if (dataStatus === "loading") {
@@ -52,7 +57,8 @@ const HenHousePage = () => {
   } else if (dataStatus === "failed") {
     renderedItems = renderedItems = (
       <div className="failedPara">
-        <p>loading failed</p>
+        <p>Loading failed</p>
+        <p>{allError}</p>
       </div>
     );
   } else {

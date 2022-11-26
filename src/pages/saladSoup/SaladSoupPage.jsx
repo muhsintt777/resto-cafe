@@ -2,18 +2,23 @@ import { nanoid } from "@reduxjs/toolkit";
 import React from "react";
 import { useSelector } from "react-redux";
 import MenuItem from "../../components/menuItem/MenuItem";
-import { getDataStatus, selectAllData } from "../../features/data/dataSlice";
+import {
+  getDataError,
+  getDataStatus,
+  selectAllData,
+} from "../../features/data/dataSlice";
 import "./SaladSoupPage.css";
 
 const SaladSoupPage = () => {
   const dataStatus = useSelector(getDataStatus);
   const allData = useSelector(selectAllData);
+  const allError = useSelector(getDataError);
 
   let renderedItems;
   if (dataStatus === "loading") {
     renderedItems = (
       <div className="loadingPara">
-        <p>loading</p>
+        <p>Loading</p>
       </div>
     );
   } else if (dataStatus === "succeeded") {
@@ -52,7 +57,8 @@ const SaladSoupPage = () => {
   } else if (dataStatus === "failed") {
     renderedItems = renderedItems = (
       <div className="failedPara">
-        <p>loading failed</p>
+        <p>Loading failed</p>
+        <p>{allError}</p>
       </div>
     );
   } else {

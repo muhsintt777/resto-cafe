@@ -18,7 +18,7 @@ const Header = () => {
         <div className="header-myOrders">
           <p>My Orders</p>
           <Badge badgeContent={cartQty} color="secondary">
-            <ShoppingCartIcon />
+            <ShoppingCartIcon color="secondary" />
           </Badge>
         </div>
       </Link>

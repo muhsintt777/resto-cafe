@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MenuItem.css";
 import CircleIcon from "@mui/icons-material/Circle";
 import { green, red } from "@mui/material/colors";
@@ -27,6 +27,7 @@ const MenuItem = ({
   addon1Items,
   addon2Items,
 }) => {
+  const [count, setCount] = useState(0);
   const dispatch = useDispatch();
   const allOrder = useSelector(selectAllOrder);
   let arr = [];
@@ -42,6 +43,7 @@ const MenuItem = ({
   };
 
   const handleAddOrder = () => {
+    setCount(count + 1);
     const checkOdr = allOrder.find((odr) => odr.id === id);
     if (!arr.length) {
       arr.push("No addons");
@@ -63,6 +65,9 @@ const MenuItem = ({
   };
 
   const handleDecrement = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
     const checkOdr = allOrder.find((odr) => odr.id === id);
     if (!checkOdr) {
       return;
@@ -125,29 +130,31 @@ const MenuItem = ({
           {currency} {price}
         </p>
         <p className="menuItem-details__description">{description}</p>
-        <div className="menuItem-buttons">
-          <Fab
-            onClick={handleDecrement}
-            size="small"
-            sx={{ color: red[500] }}
-            aria-label="remove"
-          >
-            <Remove />
-          </Fab>
-          <p>0</p>
-          <Fab
-            onClick={handleAddOrder}
-            size="small"
-            sx={{ color: green[500] }}
-            aria-label="add"
-          >
-            <Add />
-          </Fab>
-        </div>
+
         {itemAvailability ? (
-          <p>available</p>
+          <>
+            <div className="menuItem-buttons">
+              <Fab
+                onClick={handleDecrement}
+                size="small"
+                sx={{ color: red[500] }}
+                aria-label="remove"
+              >
+                <Remove />
+              </Fab>
+              <p>{count}</p>
+              <Fab
+                onClick={handleAddOrder}
+                size="small"
+                sx={{ color: green[500] }}
+                aria-label="add"
+              >
+                <Add />
+              </Fab>
+            </div>
+          </>
         ) : !itemAvailability ? (
-          <p>out of stock</p>
+          <p style={{ color: "red", marginTop: "5px" }}>out of stock</p>
         ) : null}
 
         {renderedAddons}
