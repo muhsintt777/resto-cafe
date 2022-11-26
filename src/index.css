@@ -40,6 +40,17 @@ a {
   text-decoration: none;
 }
 
+.loadingPara {
+  display: grid;
+  place-content: center;
+  color: blue;
+}
+.failedPara {
+  display: grid;
+  place-content: center;
+  color: red;
+}
+
 @media (max-width: 500px) {
   header {
     display: flex;

@@ -10,7 +10,11 @@ const Biriyani = () => {
 
   let renderedItems;
   if (dataStatus === "loading") {
-    renderedItems = <p>loading</p>;
+    renderedItems = (
+      <div className="loadingPara">
+        <p>loading</p>
+      </div>
+    );
   } else if (dataStatus === "succeeded") {
     const menuItemArray = allData[4].category_dishes;
     renderedItems = menuItemArray.map((item) => {
@@ -45,7 +49,11 @@ const Biriyani = () => {
       );
     });
   } else if (dataStatus === "failed") {
-    renderedItems = <p>loading failed</p>;
+    renderedItems = renderedItems = (
+      <div className="failedPara">
+        <p>loading failed</p>
+      </div>
+    );
   } else {
     renderedItems = null;
   }
