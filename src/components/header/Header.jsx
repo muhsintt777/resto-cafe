@@ -3,8 +3,12 @@ import React from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Badge from "@mui/material/Badge";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectAllOrder } from "../../features/order/orderSlice";
 
 const Header = () => {
+  const allOrder = useSelector(selectAllOrder);
+  const cartQty = allOrder.length;
   return (
     <header>
       <div className="header-name">
@@ -13,7 +17,7 @@ const Header = () => {
       <Link to="/order">
         <div className="header-myOrders">
           <p>My Orders</p>
-          <Badge badgeContent={4} color="secondary">
+          <Badge badgeContent={cartQty} color="secondary">
             <ShoppingCartIcon />
           </Badge>
         </div>

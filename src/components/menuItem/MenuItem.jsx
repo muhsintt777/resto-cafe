@@ -8,6 +8,8 @@ import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addOrder,
+  decrementQuantity,
+  deleteOrder,
   incrementQuantity,
   selectAllOrder,
 } from "../../features/order/orderSlice";
@@ -57,6 +59,18 @@ const MenuItem = ({
       dispatch(addOrder(orderObj));
     } else {
       dispatch(incrementQuantity(id));
+    }
+  };
+
+  const handleDecrement = () => {
+    const checkOdr = allOrder.find((odr) => odr.id === id);
+    if (!checkOdr) {
+      return;
+    }
+    if (checkOdr.quantity === 1) {
+      dispatch(deleteOrder(id));
+    } else if (checkOdr.quantity > 1) {
+      dispatch(decrementQuantity(id));
     }
   };
 
@@ -112,7 +126,12 @@ const MenuItem = ({
         </p>
         <p className="menuItem-details__description">{description}</p>
         <div className="menuItem-buttons">
-          <Fab size="small" sx={{ color: red[500] }} aria-label="remove">
+          <Fab
+            onClick={handleDecrement}
+            size="small"
+            sx={{ color: red[500] }}
+            aria-label="remove"
+          >
             <Remove />
           </Fab>
           <p>0</p>

@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 
 const OrderPage = () => {
   const allOrder = useSelector(selectAllOrder);
-  console.log(allOrder);
 
   const renderedOrder = allOrder.map((order) => {
     return (

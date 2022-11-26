@@ -14,19 +14,37 @@ const HenHousePage = () => {
     renderedItems = <p>loading</p>;
   } else if (dataStatus === "succeeded") {
     const menuItemArray = allData[2].category_dishes;
-    renderedItems = menuItemArray.map((item) => (
-      <MenuItem
-        key={nanoid()}
-        name={item.dish_name}
-        calories={item.dish_calories}
-        description={item.dish_description}
-        image={item.dish_image}
-        currency={item.dish_currency}
-        itemAvailability={item.dish_Availability}
-        price={item.dish_price}
-        type={item.dish_Type}
-      />
-    ));
+    renderedItems = menuItemArray.map((item) => {
+      const addonCatLength = item.addonCat.length;
+      let addon1Items = [];
+      let addon2Items = [];
+
+      if (addonCatLength === 2) {
+        const addonArr1 = item.addonCat[0].addons;
+        const addonArr2 = item.addonCat[1].addons;
+        addon1Items = addonArr1.map((addon) => addon.dish_name);
+        addon2Items = addonArr2.map((addon) => addon.dish_name);
+      }
+
+      const id = nanoid();
+
+      return (
+        <MenuItem
+          key={id}
+          id={id}
+          name={item.dish_name}
+          calories={item.dish_calories}
+          description={item.dish_description}
+          image={item.dish_image}
+          currency={item.dish_currency}
+          itemAvailability={item.dish_Availability}
+          price={item.dish_price}
+          type={item.dish_Type}
+          addon1Items={addon1Items}
+          addon2Items={addon2Items}
+        />
+      );
+    });
   } else if (dataStatus === "failed") {
     renderedItems = <p>loading failed</p>;
   } else {
