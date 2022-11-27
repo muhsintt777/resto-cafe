@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./MenuItem.css";
 import CircleIcon from "@mui/icons-material/Circle";
 import { green, red } from "@mui/material/colors";
@@ -27,9 +27,16 @@ const MenuItem = ({
   addon1Items,
   addon2Items,
 }) => {
-  const [count, setCount] = useState(0);
   const dispatch = useDispatch();
   const allOrder = useSelector(selectAllOrder);
+  const qOrder = allOrder.find((odr) => odr.id === id);
+  let quantity = 0;
+  if (qOrder) {
+    quantity = qOrder.quantity;
+  } else {
+    quantity = 0;
+  }
+
   let arr = [];
 
   const handleFormChange = (e) => {
@@ -43,7 +50,6 @@ const MenuItem = ({
   };
 
   const handleAddOrder = () => {
-    setCount(count + 1);
     const checkOdr = allOrder.find((odr) => odr.id === id);
     if (!arr.length) {
       arr.push("No addons");
@@ -65,9 +71,6 @@ const MenuItem = ({
   };
 
   const handleDecrement = () => {
-    if (count > 0) {
-      setCount(count - 1);
-    }
     const checkOdr = allOrder.find((odr) => odr.id === id);
     if (!checkOdr) {
       return;
@@ -142,7 +145,7 @@ const MenuItem = ({
               >
                 <Remove />
               </Fab>
-              <p>{count}</p>
+              <p>{quantity}</p>
               <Fab
                 onClick={handleAddOrder}
                 size="small"

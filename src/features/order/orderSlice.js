@@ -1,30 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [
-  //   {
-  //     id: "abcd",
-  //     name: "biriyani",
-  //     price: 10,
-  //     quantity: 2,
-  //     calories: 20,
-  //     addons: ["onion", "cheese"],
-  //   },
-  //   {
-  //     id: "abcde",
-  //     name: "chakka",
-  //     price: 20,
-  //     quantity: 5,
-  //     calories: 200,
-  //     addons: ["olakka", "ooola"],
-  //   },
-  //   {
-  //     id: "abcdef",
-  //     name: "toato",
-  //     price: 20,
-  //     quantity: 5,
-  //     calories: 200,
-  //     addons: ["olakka", "ooola"],
-  //   },
+  // {
+  //   id: "abcd",
+  //   name: "biriyani",
+  //   price: 10,
+  //   quantity: 2,
+  //   calories: 20,
+  //   addons: ["onion", "cheese"],
+  // },
+  // {
+  //   id: "abcde",
+  //   name: "chakka",
+  //   price: 20,
+  //   quantity: 5,
+  //   calories: 200,
+  //   addons: ["olakka", "ooola"],
+  // },
+  // {
+  //   id: "abcdef",
+  //   name: "toato",
+  //   price: 20,
+  //   quantity: 5,
+  //   calories: 200,
+  //   addons: ["olakka", "ooola"],
+  // },
 ];
 
 export const orderSlice = createSlice({
