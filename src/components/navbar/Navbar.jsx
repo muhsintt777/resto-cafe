@@ -1,28 +1,31 @@
+import { nanoid } from "@reduxjs/toolkit";
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { selectAllData } from "../../features/data/dataSlice";
 import "./Navbar.css";
 
 const Navbar = () => {
+  const allData = useSelector(selectAllData);
+  let routePathArr = [];
+  allData.forEach((data) => {
+    routePathArr.push(data.menu_category);
+  });
+  const home = routePathArr.shift();
+
+  const renderedLinkArr = routePathArr.map((path) => {
+    return (
+      <Link key={nanoid()} to={`/${path.split(" ").join("")}`}>
+        <button className="navbar-buttons">{path}</button>
+      </Link>
+    );
+  });
   return (
     <nav>
       <Link to="/">
-        <button className="navbar-buttons">Soup and Salad</button>
+        <button className="navbar-buttons">{home}</button>
       </Link>
-      <Link to="/barnyard">
-        <button className="navbar-buttons">From the Barnyard</button>
-      </Link>
-      <Link to="/henHouse">
-        <button className="navbar-buttons">From the Hen House</button>
-      </Link>
-      <Link to="/fromSea">
-        <button className="navbar-buttons">Fresh From The Sea</button>
-      </Link>
-      <Link to="/biriyani">
-        <button className="navbar-buttons">Biriyani</button>
-      </Link>
-      <Link to="/fastFood">
-        <button className="navbar-buttons">Fast Food</button>
-      </Link>
+      {renderedLinkArr}
     </nav>
   );
 };
