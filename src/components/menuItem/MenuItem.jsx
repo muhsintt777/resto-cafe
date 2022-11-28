@@ -2,8 +2,6 @@ import React from "react";
 import "./MenuItem.css";
 import CircleIcon from "@mui/icons-material/Circle";
 import { green, red } from "@mui/material/colors";
-import { Fab } from "@mui/material";
-import { Add, Remove } from "@mui/icons-material";
 import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -141,24 +139,21 @@ const MenuItem = ({
 
         {itemAvailability ? (
           <>
-            <div className="menuItem-buttons">
-              <Fab
+            <div className="menuItem-btns">
+              <button
                 onClick={handleDecrement}
-                size="small"
-                sx={{ color: red[500] }}
-                aria-label="remove"
+                style={{ paddingBottom: "4px" }}
+                className="menuItem-btns__addRemove"
               >
-                <Remove />
-              </Fab>
-              <p>{quantity}</p>
-              <Fab
+                -
+              </button>
+              {quantity}
+              <button
                 onClick={handleAddOrder}
-                size="small"
-                sx={{ color: green[500] }}
-                aria-label="add"
+                className="menuItem-btns__addRemove"
               >
-                <Add />
-              </Fab>
+                +
+              </button>
             </div>
           </>
         ) : !itemAvailability ? (
