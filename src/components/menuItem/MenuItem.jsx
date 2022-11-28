@@ -29,15 +29,17 @@ const MenuItem = ({
 }) => {
   const dispatch = useDispatch();
   const allOrder = useSelector(selectAllOrder);
-  const qOrder = allOrder.find((odr) => odr.id === id);
+  let arr = [];
+
+  const quantityArr = allOrder.filter((odr) => odr.name === name);
   let quantity = 0;
-  if (qOrder) {
-    quantity = qOrder.quantity;
+  if (quantityArr) {
+    quantityArr.forEach((odr) => {
+      quantity += odr.quantity;
+    });
   } else {
     quantity = 0;
   }
-
-  let arr = [];
 
   const handleFormChange = (e) => {
     const check = arr.find((add) => add === e.target.value);
@@ -50,14 +52,16 @@ const MenuItem = ({
   };
 
   const handleAddOrder = () => {
-    const checkOdr = allOrder.find((odr) => odr.id === id);
+    const orderId = `${id}-${arr.sort().join("-")}`;
+
+    const checkOdr = allOrder.find((odr) => odr.id === orderId);
     if (!arr.length) {
       arr.push("No addons");
     }
 
     if (!checkOdr) {
       const orderObj = {
-        id: id,
+        id: orderId,
         name: name,
         price: price,
         quantity: 1,
@@ -66,19 +70,20 @@ const MenuItem = ({
       };
       dispatch(addOrder(orderObj));
     } else {
-      dispatch(incrementQuantity(id));
+      dispatch(incrementQuantity(orderId));
     }
   };
 
   const handleDecrement = () => {
-    const checkOdr = allOrder.find((odr) => odr.id === id);
+    const orderId = `${id}-${arr.sort().join("-")}`;
+    const checkOdr = allOrder.find((odr) => odr.id === orderId);
     if (!checkOdr) {
       return;
     }
     if (checkOdr.quantity === 1) {
-      dispatch(deleteOrder(id));
+      dispatch(deleteOrder(orderId));
     } else if (checkOdr.quantity > 1) {
-      dispatch(decrementQuantity(id));
+      dispatch(decrementQuantity(orderId));
     }
   };
 
