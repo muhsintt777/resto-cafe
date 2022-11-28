@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MenuItem.css";
 import CircleIcon from "@mui/icons-material/Circle";
 import { green, red } from "@mui/material/colors";
@@ -25,6 +25,7 @@ const MenuItem = ({
   addon1Items,
   addon2Items,
 }) => {
+  const [showAddons, setShowAddons] = useState(false);
   const dispatch = useDispatch();
   const allOrder = useSelector(selectAllOrder);
   let arr = [];
@@ -160,7 +161,20 @@ const MenuItem = ({
           <p style={{ color: "red", marginTop: "5px" }}>out of stock</p>
         ) : null}
 
-        {renderedAddons}
+        {renderedAddons.length ? (
+          <p
+            onClick={() => setShowAddons(!showAddons)}
+            style={{
+              color: "red",
+              fontSize: "13px",
+              cursor: "pointer",
+              margin: "3px 0px",
+            }}
+          >
+            {!showAddons ? "Customizations Available" : "Hide Customizations"}
+          </p>
+        ) : null}
+        {showAddons ? renderedAddons : null}
       </div>
       <div className="menuItem-calories">
         <p>{calories} calories</p>
