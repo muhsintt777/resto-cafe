@@ -7,10 +7,10 @@
 }
 
 .orderItem-quantity {
-  width: 30px;
-  padding: 0px 10px;
+  padding: 0px 8px;
   display: flex;
   align-items: center;
+  white-space: nowrap;
 }
 
 .orderItem-description {
