@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import MenuItem from "../../components/menuItem/MenuItem";
@@ -19,7 +20,9 @@ const CategoryPages = ({ dataNum }) => {
   if (dataStatus === "loading") {
     renderedItems = (
       <div className="loadingPara">
-        <p>Loading</p>
+        <p>
+          <CircularProgress />
+        </p>
       </div>
     );
   } else if (dataStatus === "succeeded") {
