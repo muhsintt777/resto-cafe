@@ -67,6 +67,10 @@
   cursor: pointer;
 }
 
+.menuItem-customize__para {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 .menuItem-addons {
   display: flex;
   flex-direction: row;

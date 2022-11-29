@@ -158,11 +158,14 @@ const MenuItem = ({
             </div>
           </>
         ) : !itemAvailability ? (
-          <p style={{ color: "red", marginTop: "5px" }}>out of stock</p>
+          <p style={{ color: "red", marginTop: "5px", fontSize: "13px" }}>
+            Out of stock
+          </p>
         ) : null}
 
         {renderedAddons.length ? (
           <p
+            className="menuItem-customize__para"
             onClick={() => setShowAddons(!showAddons)}
             style={{
               color: "red",
