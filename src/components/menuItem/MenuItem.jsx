@@ -73,7 +73,7 @@ const MenuItem = ({
     }
   };
 
-  const handleDecrement = () => {
+  const handleDecrement = (e) => {
     const orderId = `${id}-${arr.sort().join("-")}`;
     const checkOdr = allOrder.find((odr) => odr.id === orderId);
     if (!checkOdr) {
